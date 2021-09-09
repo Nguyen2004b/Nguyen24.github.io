@@ -1,0 +1,12 @@
+[07-Jun-2021 01:32:53 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:32:53 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'baotrick_1'@'localhost' (using password: YES) in /home/tungmm1/public_html/config.php on line 19
+[07-Jun-2021 01:32:53 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/tungmm1/public_html/config.php on line 20
+[07-Jun-2021 01:33:56 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:34:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:35:38 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:35:57 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:38:26 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:39:27 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:39:39 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:39:50 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
+[07-Jun-2021 01:43:06 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tungmm1/public_html/config.php on line 3
