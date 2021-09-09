@@ -1,427 +1,361 @@
-<?php include('head.php');?>
-<head><title>Home | <?=$site_tenweb;?></title></head> 
-
-<?php 
-$total_donhang = mysqli_fetch_assoc(mysqli_query($ketnoi, "SELECT COUNT(*) FROM `orders` WHERE `username` = '".$my_username."' ")) ['COUNT(*)'];  
+<?php
+    require_once(__DIR__."/config/config.php");
+    require_once(__DIR__."/config/function.php");
+    $title = 'HOME | '.$CMSNT->site('tenweb');
+    require_once(__DIR__."/public/client/Header.php");
+    require_once(__DIR__."/public/client/Nav.php");
 ?>
-<body id="app-container" class="menu-default show-spinner"><nav class="navbar fixed-top"> <div class="d-flex align-items-center navbar-left"><a href="#" class="menu-button d-none d-md-block"><svg class="main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 17"><rect x="0.48" y="0.5" width="7" height="1" /><rect x="0.48" y="7.5" width="7" height="1" /><rect x="0.48" y="15.5" width="7" height="1" /></svg><svg class="sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 17"><rect x="1.56" y="0.5" width="16" height="1" /><rect x="1.56" y="7.5" width="16" height="1" /><rect x="1.56" y="15.5" width="16" height="1" /></svg> </a><a href="#" class="menu-button-mobile d-xs-block d-sm-block d-md-none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 17"><rect x="0.5" y="0.5" width="25" height="1" /><rect x="0.5" y="7.5" width="25" height="1" /><rect x="0.5" y="15.5" width="25" height="1" /></svg></a><div class="search" data-search-path="Layouts.Search.html?q="><input placeholder="Search..."><span class="search-icon"><i class="simple-icon-magnifier"></i></span></div></div><a class="navbar-logo" href="/"><span class="logo d-none d-xs-block"></span><span class="logo-mobile d-block d-xs-none"></span></a><div class="navbar-right"><div class="header-icons d-inline-block align-middle"><a class="btn btn-sm btn-outline-primary mr-2 d-none d-md-inline-block mb-2" href="https://www.facebook.com/V%C6%B0%C6%A1ng-Thanh-T%C3%B9ng-106376518212154">&nbsp;BUY&nbsp;</a><div class="position-relative d-none d-sm-inline-block"><button class="header-icon btn btn-empty" type="button" id="iconMenuButton" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false"><i class="simple-icon-grid"></i></button><div class="dropdown-menu dropdown-menu-right mt-3  position-absolute" id="iconMenuDropdown"><a href="#" class="icon-menu-item"><i class="iconsmind-Equalizer d-block"></i><span>Settings</span></a><a href="#" class="icon-menu-item"><i class="iconsmind-MaleFemale d-block"></i>
-                            <span>Users</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsmind-Puzzle d-block"></i>
-                            <span>Components</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsmind-Bar-Chart d-block"></i>
-                            <span>Profits</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsmind-File-Chart d-block"></i>
-                            <span>Surveys</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsmind-Suitcase d-block"></i>
-                            <span>Tasks</span>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="position-relative d-inline-block">
-                    <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="simple-icon-bell"></i>
-                        <span class="count">3</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right mt-3 scroll position-absolute" id="notificationDropdown">
-
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#">
-                                <img src="img/profile-pic-l-2.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                            </a>
-                            <div class="pl-3 pr-2">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">Joisse Kaycee just sent a new comment!</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#">
-                                <img src="img/notification-thumb.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                            </a>
-                            <div class="pl-3 pr-2">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">1 item is out of stock!</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-
-
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#">
-                                <img src="img/notification-thumb-2.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                            </a>
-                            <div class="pl-3 pr-2">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">New order received! It is total $147,20.</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-row mb-3 pb-3 ">
-                            <a href="#">
-                                <img src="img/notification-thumb-3.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                            </a>
-                            <div class="pl-3 pr-2">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">3 items just added to wish list by a user!</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button" id="fullScreenButton">
-                    <i class="simple-icon-size-fullscreen"></i>
-                    <i class="simple-icon-size-actual"></i>
-                </button>
-
-            </div>
-
-            <div class="user d-inline-block">
-      
-              <?php if(isset($_SESSION['username'])){?>
-            
-            
-                <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <span class="name"><?=$my_username;?> - <font style="color: <?=$site_color;?>;"><?=format_cash($my_vnd);?></font></span>
-                      
-
-                    <span>
-                        <img alt="Profile Picture" src="<?=$my_avt;?>" />
-                    </span>
-                </button>
-
-                <div class="dropdown-menu dropdown-menu-right mt-3">
-                    <a class="dropdown-item" href="/profile.php">Account</a>
-                    <a class="dropdown-item" href="/tc.php">Nạp Tiền</a>
-                    <a class="dropdown-item" href="#">History</a>
-                    <a class="dropdown-item" href="#">Support</a>
-                           <a class="dropdown-item" href="/admin/">Admin</a>
-                    <a class="dropdown-item" href="/dang-xuat.php">Sign out</a>  
-                    
-                    
-                    
-                    
-                    
-                    
-                    <?php } else { ?>
-
-            
-            
-                <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <span class="name">Tài Khoản</span>
-                    <span>
-                        <img alt="Profile Picture" src="https://baotricker.site/img/profile-pic-l.jpg" />
-                    </span>
-                </button>
-
-                <div class="dropdown-menu dropdown-menu-right mt-3">
-                    <a class="dropdown-item" href="/dang-nhap.php">Đăng nhập</a>
-                    <a class="dropdown-item" href="/dang-ky.php">Đăng ký</a>
-       
-                              <?php }?>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <div class="sidebar">
-        <div class="main-menu">
-            <div class="scroll">
-                <ul class="list-unstyled">
-                  
-                        <a href="#dashboard"><li class="active">
-                            <i class="iconsmind-Shop-4"></i>
-                            <span>Dashboards</span>
-                        </a>
-                    </li>
-                 <li>
-                        <a href="#layouts">  
-                        Dịch Vụ
-                        </a>
-
-                    <li>
-                        <a href="#landingPage">    <span>VÍ TIỀN</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#menu">
-                         <span>Tích Hợp API</span>
-                        </a>
-                    </li>
-                    
-                     <li>
-                        <a href="#menu2">
-                         <span>Đại Lý</span>
-                        </a>
-                    </li> 
-                                <li>
-                        <a href="/tm.php">
-                         <span>Lịch Sử</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="sub-menu">
-            <div class="scroll">
-                <ul class="list-unstyled" data-link="dashboard">
-                    <li class="active" >
-                        <a href="/">
-                            <i class="simple-icon-rocket"></i>Trang Chủ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile.php">
-                        Tài Khoản 
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Hỗ Trợ <span class="badge badge-pill badge-outline-primary float-right mr-4">NEW</span></a>
-                    </li>
-                    <li>
-                        <a href="/api/">
-                             Tích Hợp Api<span class="badge badge-pill badge-outline-primary float-right mr-4">[VIP]</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <ul class="list-unstyled" data-link="layouts">
-                  <?php
-$result = mysqli_query($ketnoi,"SELECT * FROM `category` ");
-while($row = mysqli_fetch_assoc($result))
+<?php
+if($CMSNT->site('status_ref') == 'ON')
 {
+    if(isset($_GET['ref']) )
+    {
+        $ref_id = check_string($_GET['ref']);
+        if($CMSNT->get_row("SELECT * FROM `users` WHERE `id` = '$ref_id' ")['ip'] != myip())
+        {
+            $CMSNT->cong("users", "ref_click", 1, " `id` = '$ref_id' ");
+            $_SESSION['ref'] = check_string($_GET['ref']);
+        }
+        else
+        {
+            $_SESSION['ref'] = NULL;
+        }
+    }
+}
+
+if(empty($_SESSION['ref']))
+{
+    $_SESSION['ref'] = NULL;
+}
 ?>
-                    <li >
-                        <a href="/tt.php?id=<?=$row['code'];?>">
-                       <?=$row['name'];?></a>
-                    </li>
-                    
-<?php }?>
-                </ul>
-                <ul class="list-unstyled" data-link="landingPage">
-            <li class="active">
-                        <a href="/tc.php">
-                       NẠP TIỀN <span class="badge badge-pill badge-outline-primary float-right mr-4">Giảm 10%</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="#">
-                         Báo Lỗi </a>
-                    </li>
-                </ul>
-                <ul class="list-unstyled" data-link="menu">
-                  <li class="active">
-                        <a href="/tt.php?id=dich-vu-youtobe">
-                     Api Thủ Công <span class="badge badge-pill badge-outline-primary float-right mr-4">SALE</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="#">
-                         Api Auto </a>
-                    </li>
-                </ul>
-                
-                
-                
-                
-                  <ul class="list-unstyled" data-link="menu2">
-                  <li class="active">
-                        <a href="/tt.php?id=dich-vu-youtobe">
-                          Quản Lý đại lý<span class="badge badge-pill badge-outline-primary float-right mr-4">SALE</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="#">
-                          Thuê Đại Lý</a>
-                    </li>
-                </ul>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+<?php if(getSite('display_carousel') == 'ON') { ?>
+<div id="myCarousel" class="carousel slider slide" data-ride="carousel"
+    style="background: <?=$CMSNT->site('theme_color');?>">
+    <div class="container slide">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="row">
+                    <div class="col-sm-6 pull-right"><img src="<?=BASE_URL('assets/img/');?>support.png"
+                            alt="Tích hợp API gạch thẻ tự động cho Shop" /></div>
+                    <div class="col-sm-6">
+                        <div class="slide-text">
+                            <h3 style="color: #ffffff">Tích hợp API gạch thẻ tự động cho Shop</h3>
+                            <p class="hidden-xs" style="color: #ffffff">Cam kết không nuốt thẻ, không bảo trì, có nhân
+                                viện trực hỗ trợ 24/24, rút tiền sau 1 phút. Hotline: <?=$CMSNT->site('hotline');?></p>
+                            <a href="<?=BASE_URL('Ket-noi-api');?>" class="btn btn-warning text-uppercase hidden-xs">
+                                Xem ngay </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row">
+                    <div class="col-sm-6 pull-right"><img src="<?=BASE_URL('assets/img/');?>payment.png"
+                            alt="Đổi thẻ cào thành tiền mặt nhanh chóng - tiện lợi" /></div>
+                    <div class="col-sm-6">
+                        <div class="slide-text">
+                            <h3 style="color: #ffffff">Đổi thẻ cào thành tiền mặt nhanh chóng - tiện lợi</h3>
+                            <p class="hidden-xs" style="color: #ffffff">Gạch thẻ siêu rẻ chiết khấu 15 - 20%. Rút free
+                                phí về các ngân hàng Nội địa Việt Nam, Ví điện tử Momo</p>
+                            <a href="" class="btn btn-warning text-uppercase hidden-xs"> Đổi Thẻ Ngay </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+<?php }?>
 
+<section class="main">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"
+                        style="color:white; background-color: <?=$CMSNT->site('theme_color');?>;">
+                        ĐỔI THẺ CÀO TỰ ĐỘNG</div>
+                    <div class="panel-body">
+                        <div id="thongbao"></div>
+                        <div id='loading_box' style='display:none;'>
+                                <center><img src='<?=BASE_URL('assets/img/loading_box.gif');?>' /></center>
+                        </div>
+                        <table class="table table-bordered table-striped dataTable">
+                            <tbody>
+                                <tr>
+                                    <td>Loại thẻ</td>
+                                    <td><select id="loaithe" class="telco form-control"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mệnh giá</td>
+                                    <td><select id="menhgia" class="charging-amount form-control">
+                                            <option value="">Vui lòng chọn loại thẻ</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Số seri</td>
+                                    <td><input id="seri" style="color: green;" class="form-control" type="text" placeholder="Seri"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mã thẻ</td>
+                                    <td><input id="pin" style="color: blue;" class="form-control" type="text" placeholder="Mã thẻ"></td>
+                                </tr>
+                                <tr>
+                                    <td>Thực nhận</td>
+                                    <td><input id="thucnhan" style="color: red;" class="form-control" type="text" value="0" readonly></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="hidden" id="token" value="<?=$getUser['token'];?>">
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" id="NapTheAuto" class="btn btn-primary">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i> NẠP NGAY
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+            $("#NapTheAuto").on("click", function() {
+                $("#loading_box").show();
+                $('#NapTheAuto').html('ĐANG XỬ LÝ').prop('disabled',
+                    true);
+                $.ajax({
+                    url: "<?=BASE_URL("assets/ajaxs/NapThe.php");?>",
+                    method: "POST",
+                    data: {
+                        type: 'NapTheAuto',
+                        token: $("#token").val(),
+                        seri: $("#seri").val(),
+                        pin: $("#pin").val(),
+                        loaithe: $("#loaithe").val(),
+                        menhgia: $("#menhgia").val()
+                    },
+                    success: function(response) {
+                        $("#loading_box").hide();
+                        $("#thongbao").html(response);
+                        $('#NapTheAuto').html(
+                                '<i class="fa fa-upload" aria-hidden="true"></i> NẠP NGAY')
+                            .prop('disabled', false);
+                    }
+                });
+            });
+            </script>
+            <script type="text/javascript">
+            $(document).ready(function() {
+                setTimeout(e => {
+                    GetCard24()
+                }, 0)
+            });
+            function GetCard24() {
+                $.ajax({
+                    url: "<?=BASE_URL('api/loaithe.php');?>",
+                    method: "GET",
+                    success: function(response) {
+                        $("#loaithe").html(response);
+                    }
+                });
+            }
+            </script>
+            <script type="text/javascript">
+            $('#loaithe').change(function() {
+                $.ajax({
+                    url: "<?=BASE_URL("assets/ajaxs/menhgia.php");?>",
+                    method: "GET",
+                    data: {
+                        loaithe: $("#loaithe").val()
+                    },
+                    success: function(response) {
+                        $("#menhgia").html(response);
+                    }
+                });
+            });
+            </script>
+            <script type="text/javascript">
+            $('#menhgia').change(function() {
+                var ketqua = 'Đang tính thực nhận';
+                document.getElementById("thucnhan").value = (ketqua.toString().replace(
+                    /(.)(?=(\d{3})+$)/g, '$1.'));
+                $.ajax({
+                    url: "<?=BASE_URL("assets/ajaxs/thucnhan.php");?>",
+                    method: "GET",
+                    data: {
+                        loaithe: $("#loaithe").val(),
+                        menhgia: $("#menhgia").val()
+                    },
+                    success: function(response) {
+                        var ketqua = response;
+                        document.getElementById("thucnhan").value = (ketqua.toString().replace(
+                            /(.)(?=(\d{3})+$)/g, '$1.') + 'đ');
+                    }
+                });
+            });
+            </script>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"
+                        style="color:white; background-color: <?=$CMSNT->site('theme_color');?>;">
+                        THÔNG BÁO</div>
+                    <div class="panel-body"><?=$CMSNT->site('thongbao');?></div>
+                </div>
+            </div>
+            <?php if(isset($_SESSION['username'])) { ?>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"
+                        style="color:white; background-color: <?=$CMSNT->site('theme_color');?>;">
+                        LỊCH SỬ ĐỔI THẺ</div>
+                    <div class="panel-body">
+                        <p>Với các thẻ đang xử lý quý khách có thể <a href="javascript:location.reload()"><b
+                                    class="text-danger"> nhấn vào
+                                    đây </b></a> để cập nhật trạng thái của thẻ cào.
+                        </p>
+                        <div class="table-responsive">
+                            <table id="datatable2" class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>LOẠI THẺ</th>
+                                        <th>MỆNH GIÁ</th>
+                                        <th>THỰC NHẬN</th>
+                                        <th>SERI</th>
+                                        <th>PIN</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>CẬP NHẬT</th>
+                                        <th>TRẠNG THÁI</th>
+                                        <th>GHI CHÚ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i=0; foreach($CMSNT->get_list(" SELECT * FROM `card_auto` WHERE `username` = '".$getUser['username']."' ORDER BY id DESC ") as $row) { ?>
+                                    <tr>
+                                        <td><?=$i++;?></td>
+                                        <td><?=$row['loaithe'];?></td>
+                                        <td><b style="color: green;"><?=format_cash($row['menhgia']);?></b>
+                                        </td>
+                                        <td><b style="color: red;"><?=format_cash($row['thucnhan']);?></b>
+                                        </td>
+                                        <td><?=$row['seri'];?></td>
+                                        <td><?=$row['pin'];?></td>
+                                        <td><span class="label label-danger"><?=$row['thoigian'];?></span>
+                                        </td>
+                                        <td><span class="label label-primary"><?=$row['capnhat'];?></span>
+                                        </td>
+                                        <td><?=status($row['trangthai']);?></td>
+                                        <td><?=$row['ghichu'];?></td>
+                                    </tr>
+                                    <?php }?>
+                                </tbody>
+                            </table>
+                        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<main>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12 col-lg-12">
-<div class="row">
-<div class="col-md-12 col-lg-6 mb-6">
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
-<a href="/tc.php"><h6 class="mb-0 font-weight-bold">NẠP TIỀN VÀO TÀI KHOẢN</h6>
-</a>
-<a href="/tc.php"><i class="fas fa-angle-double-right "></i></a>
-</div>
-</div>
-</div>
-<div class="col-md-12 col-lg-3 mb-3">
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
- <h6 class="mb-0 font-weight-bold">Số Dư</h6>
-<h3><?=format_cash($my_vnd);?></h3>
-</div>
-</div>
-</div>
-<div class="col-md-12 col-lg-3 mb-3">
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
-<h6 class="mb-0 font-weight-bold">Tổng Số Tiền Đã Nạp</h6>
-<h3><?=format_cash($my_total_nap);?> </h3>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-6 mb-6">
-<div class="card h-100">
-<div class="card-body">
-<h5 class="card-title">Thông báo hệ thống</h5>
-<div class="scroll dashboard-list-with-user">
-<div class="d-flex flex-row mb-3 pb-3 border-bottom">
-<a href="#">
-<img src="https://1.bp.blogspot.com/-llq74jMP06U/Xvt-f3ndS7I/AAAAAAAAACA/uk_V3R4CVZQf6BkCtROVDnzumbm5OPH4gCK4BGAsYHg/s320/12.jpg" alt="Mayra Sibley" class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall" />
-</a>
-<div class="pl-3">
-<a href="#">
-<p class="font-weight-medium mb-0 ">Thông báo</p>
-<p class="text-muted mb-0 text-small">Ưu đãi cho các bạn mở site đại lý : Sẽ có rate riêng dành cho các bạn mở site để cạnh tranh thị trường &gt;&gt;&gt; Thêm gói mem group giá rẻ lên ngay &gt;&gt;&gt; Các bạn cập nhập số ddt nạp MoMo nhé. Đừng quên vào nhóm telegram để nhận thông báo nha các bạn.</p>
-</a>
-</div>
-</div>
-<div class="d-flex flex-row mb-3 pb-3 border-bottom">
-<a href="#">
-<img src="https://1.bp.blogspot.com/-llq74jMP06U/Xvt-f3ndS7I/AAAAAAAAACA/uk_V3R4CVZQf6BkCtROVDnzumbm5OPH4gCK4BGAsYHg/s320/12.jpg" alt="Mayra Sibley" class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall" />
-</a>
-<div class="pl-3">
-<a href="#">
-<p class="font-weight-medium mb-0 ">Thông báo</p>
-<p class="text-muted mb-0 text-small"><?=$site_thongbao;?></p>
-</a>
-</div>
-</div>
-
-
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-3 mb-3">
-<div class="dashboard-list-with-user">
-<hr>
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
-<h6 class="mb-0 font-weight-bold"><a target="_blank" href="#">Group
-Facebook</a></h6>
-</div>
-</div>
-<hr>
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
-<h6 class="mb-0 font-weight-bold"><a target="_blank" href="#">Group
-Fanpage</a></h6>
-</div>
-</div>
-<hr>
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
-<h6 class="mb-0 font-weight-bold"><a target="_blank" href="#">Group
-Telegram</a></h6>
-</div>
-</div>
-<hr>
-<div class="card">
-<div class="card-body d-flex justify-content-between align-items-center">
-<h6 class="mb-0 font-weight-bold"><a target="_blank" href="#">Group
-Zalo</a></h6>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-3 mb-3">
-<hr>
-<div>
-<div class="mini-submenu">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</div>
-<div class="list-group">
- <a href="#" target="_blank" class="list-group-item font-weight-bold">
-<i class="fas fa-feather-alt"></i> Mua page + group
-</a>
-<a href="#" target="_blank" class="list-group-item">
-<i class="fa fa-plus ml-3"></i> Mua acc TikTok <span class="badge">
-<img src="/new.gif"> </span>
-</a>
-<a href="#" target="_blank" class="list-group-item">
-<i class="fa fa-plus ml-3"></i> Bảng giá dịch vụ <span class="badge">
-<img src="/new.gif"> </span>
-</a>
-<a href="#" target="_blank" class="list-group-item">
-<i class="fa fa-plus ml-3"></i> Mua page <span class="badge">
-<img src="/new.gif"> </span>
-</a>
-<a href="#" target="_blank" class="list-group-item font-weight-bold">
-<i class="fas fa-feather-alt"></i> Học thuật Facebook miễn phí
-</a>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12 col-lg-4 mb-4">
-</div>
-
-</div>
-</div>
-</main>
-<?php include('foot.php');?>          
+                    </div>
+                </div>
+            </div>
+            <script>
+            $(document).ready(function() {
+                $('#datatable2').DataTable();
+            });
+            </script>
+            <?php }?>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"
+                        style="color:white; background-color: <?=$CMSNT->site('theme_color');?>;">
+                        BIỂU PHÍ ĐỔI THẺ</div>
+                    <div class="panel-body">
+                        <div class="tabpage" id="bang-phi">
+                            <ul class="nav nav-tabs">
+                                <?php foreach($list_loaithe as $loaithe) { ?>
+                                <li class="<?=$loaithe == 'VIETTEL' ? 'active' : '';?>">
+                                    <a data-toggle="tab" href="#discount-<?=$loaithe;?>">
+                                        <span class="title"><?=$loaithe;?></span>
+                                    </a>
+                                </li>
+                                <?php }?>
+                            </ul>
+                            <div class="tab-content" style="padding-top: 20px;">
+                                <?php foreach($list_loaithe as $loaithe) { ?>
+                                <div class="table-responsive tab-pane fadess in <?=$loaithe == 'VIETTEL' ? 'active' : '';?>"
+                                    id="discount-<?=$loaithe;?>">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Nhóm thành
+                                                    viên
+                                                </th>
+                                                <th class="text-center">Thẻ 10,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 20,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 30,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 50,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 100,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 200,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 300,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ 500,000đ
+                                                </th>
+                                                <th class="text-center">Thẻ
+                                                    1,000,000đ
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            <tr>
+                                                <td><b>Thành viên/API</b></td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '10000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '20000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '30000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '50000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '100000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '200000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '300000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '500000' ")['ck'];?>%
+                                                </td>
+                                                <td><?=$CMSNT->get_row("SELECT * FROM `ck_card_auto` WHERE `loaithe` = '$loaithe' AND `menhgia` = '1000000' ")['ck'];?>%
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php }?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+$(function() {
+    $("#datatable").DataTable({
+        "responsive": false,
+        "autoWidth": false,
+    });
+});
+</script>
+<?php 
+    require_once(__DIR__."/public/client/Footer.php");
+?>
